@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--    scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。-->
+    <!--    scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。-->
+    <!--    debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。-->
+    <property name="log_home" value="../log" />
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!--        appender用来格式化日志输出节点，有俩个属性name和class，class用来指定哪种输出策略，常用就是控制台输出策略和文件输出策略。-->
+        <encoder>
+<!--            %green(%d{HH:mm:ss.SSS}) [%thread] %highlight(%-5level) %logger{36} %red(-) %msg%n-->
+            <pattern>%green(%d{yy-MM-dd HH:mm:ss}) [%t] %highlight(%-5p) %c{0} %red(-->) %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- file property left unset/blank -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log_home}/log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%relative [%thread] %level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <!--        root节点是必选节点，用来指定最基础的日志输出级别，只有一个level属性。-->
+        <!--        level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，不能设置为INHERITED或者同义词NULL。-->
+        <!--        默认是DEBUG。-->
+        <!--        可以包含零个或多个元素，标识这个appender将会添加到这个loger。-->
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+</configuration>
