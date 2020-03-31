@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="asserts/plugins/editormd/css/editormd.min.css" />
+    <link rel="stylesheet" href="asserts/plugins/editormd/css/editormd.preview.css" />
+    <link rel="stylesheet" href="asserts/css/bootstrap.min-jsf.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="input-group">
+        <div class="ml-2"><a href="#" class="navbar-brand">返回</a></div>
+        <input class="form-control mr-1" type="text" name="article" placeholder="输入文章标题">
+        <button class="btn btn-primary mr-1" type="button" >保存草稿</button>
+        <button class="btn btn-primary" type="button" >发布文章</button>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div id="editor">
+                <textarea style="display:none;"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="asserts/js/jquery.js"></script>
+<script src="asserts/plugins/editormd/editormd.min.js"></script>
+<script src="asserts/plugins/editormd/lib/marked.min.js"></script>
+<script src="asserts/plugins/editormd/lib/prettify.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var editor = editormd("editor", {
+            width: "90%",
+            height: "720px",
+            path: "asserts/plugins/editormd/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
+            saveHTMLToTextarea : true, // 保存 HTML 到 Textarea
+            toolbarAutoFixed:true,//工具栏自动固定定位的开启与禁用
+            tocm : true, // Using [TOCM]
+            tex : true, // 开启科学公式TeX语言支持，默认关闭
+            flowChart : true,             // 开启流程图支持，默认关闭
+            sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/file/uploadImage",//图片上传的url,
+            fontSize: "18px",
+        });
+    });
+</script>
+</body>
+</html>
