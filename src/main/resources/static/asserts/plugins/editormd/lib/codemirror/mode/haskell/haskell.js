@@ -214,7 +214,7 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       "compare", "concat", "concatMap", "const", "cos", "cosh", "curry",
       "cycle", "decodeFloat", "div", "divMod", "drop", "dropWhile", "either",
       "elem", "encodeFloat", "enumFrom", "enumFromThen", "enumFromThenTo",
-      "enumFromTo", "error", "even", "exp", "exponent", "fail", "filter",
+      "enumFromTo", "error", "even", "exp", "exponent", "fail", "interceptor",
       "flip", "floatDigits", "floatRadix", "floatRange", "floor", "fmap",
       "foldl", "foldl1", "foldr", "foldr1", "fromEnum", "fromInteger",
       "fromIntegral", "fromRational", "fst", "gcd", "getChar", "getContents",

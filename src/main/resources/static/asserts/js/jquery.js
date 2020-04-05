@@ -1147,9 +1147,9 @@ setDocument = Sizzle.setDocument = function( node ) {
 		return !document.getElementsByName || !document.getElementsByName( expando ).length;
 	});
 
-	// ID filter and find
+	// ID interceptor and find
 	if ( support.getById ) {
-		Expr.filter["ID"] = function( id ) {
+		com.topblog.myblog.interceptor["ID"] = function(id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
 				return elem.getAttribute("id") === attrId;
@@ -1162,7 +1162,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 		};
 	} else {
-		Expr.filter["ID"] =  function( id ) {
+		com.topblog.myblog.interceptor["ID"] =  function(id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
 				var node = typeof elem.getAttributeNode !== "undefined" &&
@@ -1681,7 +1681,7 @@ Expr = Sizzle.selectors = {
 					Sizzle.error( match[0] );
 				}
 
-				// numeric x and y parameters for Expr.filter.CHILD
+				// numeric x and y parameters for Expr.interceptor.CHILD
 				// remember that false/true cast respectively to 0/1
 				match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
 				match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
@@ -1718,7 +1718,7 @@ Expr = Sizzle.selectors = {
 				match[2] = unquoted.slice( 0, excess );
 			}
 
-			// Return only captures needed by the pseudo filter method (type and argument)
+			// Return only captures needed by the pseudo interceptor method (type and argument)
 			return match.slice( 0, 3 );
 		}
 	},
@@ -1907,7 +1907,7 @@ Expr = Sizzle.selectors = {
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
 			// The user may use createPseudo to indicate that
-			// arguments are needed to create the filter function
+			// arguments are needed to create the interceptor function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
 				return fn( argument );
@@ -2457,7 +2457,7 @@ function matcherFromTokens( tokens ) {
 		if ( (matcher = Expr.relative[ tokens[i].type ]) ) {
 			matchers = [ addCombinator(elementMatcher( matchers ), matcher) ];
 		} else {
-			matcher = Expr.filter[ tokens[i].type ].apply( null, tokens[i].matches );
+			matcher = com.topblog.myblog.interceptor[ tokens[i].type ].apply( null, tokens[i].matches );
 
 			// Return special upon seeing a positional matcher
 			if ( matcher[ expando ] ) {
@@ -2832,7 +2832,7 @@ var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|
 
 
 
-// Implement the identical functionality for filter and not
+// Implement the identical functionality for interceptor and not
 function winnow( elements, qualifier, not ) {
 	if ( isFunction( qualifier ) ) {
 		return jQuery.grep( elements, function( elem, i ) {
@@ -3123,7 +3123,7 @@ jQuery.fn.extend( {
 
 	addBack: function( selector ) {
 		return this.add( selector == null ?
-			this.prevObject : this.prevObject.filter( selector )
+			this.prevObject : com.topblog.myblog.interceptor( selector )
 		);
 	}
 } );
@@ -4511,7 +4511,7 @@ var documentElement = document.documentElement;
 	}
 var isHiddenWithinTree = function( elem, el ) {
 
-		// isHiddenWithinTree might be called from jQuery#filter function;
+		// isHiddenWithinTree might be called from jQuery#interceptor function;
 		// in that case, element will be second argument
 		elem = el || elem;
 
@@ -6347,7 +6347,7 @@ function curCSS( elem, name, computed ) {
 	computed = computed || getStyles( elem );
 
 	// getPropertyValue is needed for:
-	//   .css('filter') (IE 9 only, #12537)
+	//   .css('interceptor') (IE 9 only, #12537)
 	//   .css('--customProperty) (#3144)
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
@@ -8719,13 +8719,7 @@ jQuery.fn.extend( {
 		return jQuery.param( this.serializeArray() );
 	},
 	serializeArray: function() {
-		return this.map( function() {
-
-			// Can add propHook for "elements" to filter or add form elements
-			var elements = jQuery.prop( this, "elements" );
-			return elements ? jQuery.makeArray( elements ) : this;
-		} )
-		.filter( function() {
+		return com.topblog.myblog.interceptor( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works

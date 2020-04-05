@@ -46,7 +46,7 @@ CodeMirror.defineMode("tiddlywiki", function () {
       "today": kw('today'), "version": kw('version'),   "option": kw('option'),
 
       "with": kw('with'),
-      "filter": kw('filter')
+      "filter": kw('interceptor')
     };
   }();
 

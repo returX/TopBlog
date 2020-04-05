@@ -23,7 +23,7 @@
                         "try", "while", "with", "yield", "in"];
   var commonBuiltins = ["abs", "all", "any", "bin", "bool", "bytearray", "callable", "chr",
                         "classmethod", "compile", "complex", "delattr", "dict", "dir", "divmod",
-                        "enumerate", "eval", "filter", "float", "format", "frozenset",
+                        "enumerate", "eval", "interceptor", "float", "format", "frozenset",
                         "getattr", "globals", "hasattr", "hash", "help", "hex", "id",
                         "input", "int", "isinstance", "issubclass", "iter", "len",
                         "list", "locals", "map", "max", "memoryview", "min", "next",

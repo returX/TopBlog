@@ -481,7 +481,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     "voice-volume", "volume", "white-space", "widows", "width", "word-break",
     "word-spacing", "word-wrap", "z-index",
     // SVG-specific
-    "clip-path", "clip-rule", "mask", "enable-background", "filter", "flood-color",
+    "clip-path", "clip-rule", "mask", "enable-background", "interceptor", "flood-color",
     "flood-opacity", "lighting-color", "stop-color", "stop-opacity", "pointer-events",
     "color-interpolation", "color-interpolation-filters",
     "color-rendering", "fill", "fill-opacity", "fill-rule", "image-rendering",

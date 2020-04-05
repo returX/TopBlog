@@ -14,15 +14,7 @@ public class BaseController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping("hello")
-    public String hello(){
-//        logger.trace();
-//        logger.info();
-//        logger.debug();
-//        logger.error();
-//        logger.warn();
-        return "index";
-    }
+
     @RequestMapping("create")
     public String create(){
         return "create";

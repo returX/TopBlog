@@ -13,125 +13,29 @@
             <div class="row" >
                 <div class="col-9 main">
                     <!-- 此row是文章简介main -->
-                    <div class="article-item box-shadow mb-3">
+                    <div class="article-item box-shadow mb-3" th:each="article:${articles}">
                         <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
+                            <a href="#" th:text="${article.articleTitle}">java虚拟机运行时数据区</a>
                         </h5>
                         <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
+                            <a href="#" th:text="${article.articleContentInfo}">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
                         </p>
                         <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
+                            <p><span class="date" th:text="${article.articleDate}">2020-01-19 00:49:25</span></p>
                             <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
+                            <p><span class="read-num">阅读数<span class="num" th:text="${article.articleViewsCount}">1</span></span></p>
                             <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
+                            <p><span class="like-num">点赞数<span class="num" th:text="${article.articleLikeCount}">1</span></span></p>
+                            <p class="point"></p>
+                            <p><span class="comment-num">评论数<span class="num" th:text="${article.articleCommentCount}">1</span></span></p>
                         </div>
                     </div>
                     <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
-                    </div>
-                    <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
-                    </div>
-                    <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
-                    </div>
-                    <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
-                    </div>
-                    <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
-                    </div>
-                    <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
-                    </div>
-                    <div class="article-item box-shadow mb-3">
-                        <h5>
-                            <a href="#">java虚拟机运行时数据区</a>
-                        </h5>
-                        <p class="content">
-                            <a href="#">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
-                        </p>
-                        <div class="info">
-                            <p><span class="date">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num">1</span></span></p>
-                        </div>
+                        <ul class="pagination justify-content-center" >
+                            <li class="page-item" th:classappend="${articles.isFirst() eq true?'disabled':''}" ><a class="page-link" th:href="@{/(pageNo=${articles.number - 1})}">上一页</a></li>
+                            <li class="page-item" th:classappend="${articles.number+1 eq index?'active':''}" th:each="index:${#numbers.sequence(1,articles.getTotalPages())}"><a class="page-link" th:href="@{/(pageNo=${index}-1)}" th:text="${index}">1</a></li>
+                            <li class="page-item" th:classappend="${articles.isLast() eq true?'disabled':''}"><a class="page-link" th:href="@{/(pageNo=${articles.number + 1})}">下一页</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-3 aside">
@@ -160,16 +64,34 @@
                             <div class="card-body">
                                 <a href="#" class="btn btn-primary">Java</a>
                                 <a href="/create" class="btn btn-primary">create</a>
+                                <a onclick="sle()" class="btn btn-primary">test</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
 <body th:include="include :: js-common"></body>
+<!--<script th:inline="javascript">-->
+<!--    // $(function () {-->
+<!--        // $.ajax({-->
+<!--        //     url : "/articles",-->
+<!--        //     async : true,-->
+<!--        //     data :{-->
+<!--        //         pageNo : 1,-->
+<!--        //         sum : 5,-->
+<!--        //         direction : "DESC",-->
+<!--        //         property : "articleId"-->
+<!--        //     },-->
+<!--        //     type : "get",-->
+<!--        //     success:function (result) {-->
+<!--        //         console.log(result);-->
+<!--        //     }-->
+<!--        // })-->
+<!--    // })-->
+<!--</script>-->
 </body>
 </html>

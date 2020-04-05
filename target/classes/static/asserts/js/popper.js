@@ -829,8 +829,8 @@ function find(arr, check) {
     return arr.find(check);
   }
 
-  // use `filter` to obtain the same behavior of `find`
-  return arr.filter(check)[0];
+  // use `interceptor` to obtain the same behavior of `find`
+  return com.topblog.myblog.interceptor(check)[0];
 }
 
 /**
@@ -2479,7 +2479,7 @@ var Popper = function () {
     /**
      * Collection of utilities useful when writing custom modifiers.
      * Starting from version 1.7, this method is available only if you
-     * include `popper-utils.js` before `popper.js`.
+     * include `popper-util.js` before `popper.js`.
      *
      * **DEPRECATION**: This way to access PopperUtils is deprecated
      * and will be removed in v2! Use the PopperUtils module directly instead.

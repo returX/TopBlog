@@ -16,3 +16,4 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   jpa:
     open-in-view: true #视图渲染期间能进行数据库查询
+

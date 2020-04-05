@@ -48,7 +48,7 @@
 
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      if (enumerableOnly) symbols = com.topblog.myblog.interceptor(function (sym) {
         return Object.getOwnPropertyDescriptor(object, sym).enumerable;
       });
       keys.push.apply(keys, symbols);
@@ -2778,7 +2778,7 @@
       return true;
     }
 
-    var regExp = allowedAttributeList.filter(function (attrRegex) {
+    var regExp = com.topblog.myblog.interceptor(function (attrRegex) {
       return attrRegex instanceof RegExp;
     }); // Check if a regular expression validates the attribute.
 

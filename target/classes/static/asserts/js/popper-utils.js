@@ -686,8 +686,8 @@ function find(arr, check) {
     return arr.find(check);
   }
 
-  // use `filter` to obtain the same behavior of `find`
-  return arr.filter(check)[0];
+  // use `interceptor` to obtain the same behavior of `find`
+  return com.topblog.myblog.interceptor(check)[0];
 }
 
 /**
@@ -1059,7 +1059,7 @@ function setupEventListeners(reference, options, state, updateBound) {
 // This is here just for backward compatibility with versions lower than v1.10.3
 // you should import the utilities using named exports, if you want them all use:
 // ```
-// import * as PopperUtils from 'popper-utils';
+// import * as PopperUtils from 'popper-util';
 // ```
 // The default export will be removed in the next major version.
 var index = {
@@ -1128,4 +1128,4 @@ exports['default'] = index;
 Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=popper-utils.js.map
+//# sourceMappingURL=popper-util.js.map
