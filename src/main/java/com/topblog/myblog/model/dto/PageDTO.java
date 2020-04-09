@@ -14,17 +14,19 @@ public class PageDTO {
     private Integer sum;
     private String direction;
     private String property;
+    private Integer tag;
+    // todo 为了添加tag修改pageDTO
 
     public PageDTO() {
     }
 
-    public PageDTO(Integer pageNo, Integer sum, String direction, String property) {
+    public PageDTO(Integer pageNo, Integer sum, String direction, String property,Integer tag) {
         this.pageNo = Optional.ofNullable(pageNo).orElse(0);
         this.sum = Optional.ofNullable(sum).orElse(PageConstant.PAGE_NUMS);
         this.direction = Optional.ofNullable(direction).orElse(PageConstant.DERECTION);
         this.property = Optional.ofNullable(property).orElse(PageConstant.PROPERTY);
+        this.tag = Optional.ofNullable(tag).orElse(PageConstant.TAG);
     }
-
 
     @Override
     public String toString() {
@@ -33,6 +35,7 @@ public class PageDTO {
                 .add("sum=" + sum)
                 .add("direction='" + direction + "'")
                 .add("property='" + property + "'")
+                .add("tag=" + tag)
                 .toString();
     }
 
@@ -66,5 +69,13 @@ public class PageDTO {
 
     public void setProperty(String property) {
         this.property = property;
+    }
+
+    public Integer getTag() {
+        return tag;
+    }
+
+    public void setTag(Integer tag) {
+        this.tag = tag;
     }
 }

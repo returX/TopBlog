@@ -3,6 +3,7 @@ package com.topblog.myblog;
 import com.topblog.myblog.model.dto.PageDTO;
 import com.topblog.myblog.model.entity.Article;
 import com.topblog.myblog.service.ArticleService;
+import com.topblog.myblog.service.TagService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +18,29 @@ class MyblogApplicationTests {
 
     @Autowired
     ArticleService articleService;
+    @Autowired
+    TagService tagService;
 
     @Test
     void contextLoads() {
-        PageDTO pageDTO = new PageDTO(0,3,"DESC","articleId");
+        PageDTO pageDTO = new PageDTO(0,3,"DESC","articleId",-1);
         Page<Article> articles = articleService.getPage(pageDTO);
         log.info("{}",articles.isFirst());
+    }
+
+    @Test
+    void getByTagWithPage(){
+        PageDTO pageDTO = new PageDTO(0,3,"DESC","articleId",1);
+        Page<Article> articles = articleService.getPage(pageDTO);
+        log.info("{}",articles);
+    }
+
+    /**
+     *获取所有tag的测试
+     */
+    @Test
+    void tagTest(){
+        tagService.listTag();
     }
 
 }

@@ -49,11 +49,15 @@ public class Article {
      * 点赞数
      */
     private Integer articleLikeCount;
+    /**
+     *所属分类id
+     */
+    private Integer articleTagId;
 
     public Article() {
     }
 
-    public Article(Integer articleId, String articleTitle, String articleContentHtml, String articleContentMd, String articleContentInfo, LocalDateTime articleDate, Integer articleViewsCount, Integer articleCommentCount, Integer articleLikeCount) {
+    public Article(Integer articleId, String articleTitle, String articleContentHtml, String articleContentMd, String articleContentInfo, LocalDateTime articleDate, Integer articleViewsCount, Integer articleCommentCount, Integer articleLikeCount,Integer articleTagId) {
         this.articleId = articleId;
         this.articleTitle = articleTitle;
         this.articleContentHtml = articleContentHtml;
@@ -63,6 +67,25 @@ public class Article {
         this.articleViewsCount = articleViewsCount;
         this.articleCommentCount = articleCommentCount;
         this.articleLikeCount = articleLikeCount;
+        this.articleTagId = articleTagId;
+    }
+
+    public Article(Integer articleId, String articleTitle, String articleContentInfo, LocalDateTime articleDate, Integer articleViewsCount, Integer articleCommentCount, Integer articleLikeCount) {
+        this.articleId = articleId;
+        this.articleTitle = articleTitle;
+        this.articleContentInfo = articleContentInfo;
+        this.articleDate = articleDate;
+        this.articleViewsCount = articleViewsCount;
+        this.articleCommentCount = articleCommentCount;
+        this.articleLikeCount = articleLikeCount;
+    }
+
+    public Integer getArticleTagId() {
+        return articleTagId;
+    }
+
+    public void setArticleTagId(Integer articleTagId) {
+        this.articleTagId = articleTagId;
     }
 
     public Integer getArticleId() {
@@ -149,6 +172,7 @@ public class Article {
                 .add("articleViewsCount=" + articleViewsCount)
                 .add("articleCommentCount=" + articleCommentCount)
                 .add("articleLikeCount=" + articleLikeCount)
+                .add("articleTagId=" + articleTagId)
                 .toString();
     }
 }

@@ -31,10 +31,10 @@
                         </div>
                     </div>
                     <div class="article-item box-shadow mb-3">
-                        <ul class="pagination justify-content-center" >
-                            <li class="page-item" th:classappend="${articles.isFirst() eq true?'disabled':''}" ><a class="page-link" th:href="@{/(pageNo=${articles.number - 1})}">上一页</a></li>
-                            <li class="page-item" th:classappend="${articles.number+1 eq index?'active':''}" th:each="index:${#numbers.sequence(1,articles.getTotalPages())}"><a class="page-link" th:href="@{/(pageNo=${index}-1)}" th:text="${index}">1</a></li>
-                            <li class="page-item" th:classappend="${articles.isLast() eq true?'disabled':''}"><a class="page-link" th:href="@{/(pageNo=${articles.number + 1})}">下一页</a></li>
+                        <ul class="pagination justify-content-center" th:with="tids = ${tid}">
+                            <li class="page-item" th:classappend="${articles.isFirst() eq true?'disabled':''}" ><a class="page-link" th:href="@{/(pageNo=${articles.number - 1},tagId=${tids})}">上一页</a></li>
+                            <li class="page-item" th:classappend="${articles.number+1 eq index?'active':''}" th:each="index:${#numbers.sequence(1,articles.getTotalPages())}"><a class="page-link" th:href="@{/(pageNo=${index}-1,tagId=${tids})}" th:text="${index}">1</a></li>
+                            <li class="page-item" th:classappend="${articles.isLast() eq true?'disabled':''}"><a class="page-link" th:href="@{/(pageNo=${articles.number + 1},tagId=${tids})}">下一页</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,12 +59,11 @@
                         <!--  这个row是右列tags-->
                         <div class="card box-shadow">
                             <div class="card-header text-center">
-                                标签
+                                分类
                             </div>
                             <div class="card-body">
-                                <a href="#" class="btn btn-primary">Java</a>
-                                <a href="/create" class="btn btn-primary">create</a>
-                                <a onclick="sle()" class="btn btn-primary">test</a>
+                                <a  th:href="@{/(tagId=null)}" href="#" class="btn btn-primary btn-block" th:text="全部类别"></a>
+                                <a th:each="tag:${tags}" th:href="@{/(tagId=${tag.tagId})}" href="#" class="btn btn-primary btn-block" th:text="${tag.tagName+'  '+tag.tagNum}">Java</a>
                             </div>
                         </div>
                     </div>

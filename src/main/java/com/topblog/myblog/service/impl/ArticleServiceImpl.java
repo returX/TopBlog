@@ -27,9 +27,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Page<Article> getPage(PageDTO pageDTO) {
-
         Pageable pageable = PageRequest.of(pageDTO.getPageNo(),pageDTO.getSum(),Sort.Direction.fromString(pageDTO.getDirection()),pageDTO.getProperty());
-        Page<Article> articles = articleRepository.findAll(pageable);
+        Page<Article> articles = null;
+        if (pageDTO.getTag() != -1){
+            articles = articleRepository.findInfoByTagId(pageable,pageDTO.getTag());
+        }else {
+            articles = articleRepository.findInfo(pageable);
+        }
         log.info("获取第{}页文章,共{}篇",articles.getNumber()+1,articles.getContent().size());
         return articles;
     }
