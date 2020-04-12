@@ -1,5 +1,8 @@
 package com.topblog.myblog.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.StringJoiner;
@@ -10,7 +13,7 @@ import java.util.StringJoiner;
  */
 @Entity
 @Table(name = "bk_articles")
-public class Article {
+public class Article{
     /**
      * 文章id
      */
@@ -33,9 +36,13 @@ public class Article {
      * 文章简介
      */
     private String articleContentInfo;
+
     /**
      * 文章创建时间
      */
+    //出参格式化 后台返回参数格式化为pattern要求
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")//入参格式化 ss前端传入参数符合pattern要求
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime articleDate;
     /**
      * 阅读数

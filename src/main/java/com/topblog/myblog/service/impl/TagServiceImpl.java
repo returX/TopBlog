@@ -32,4 +32,10 @@ public class TagServiceImpl implements TagService {
         log.info("分类数：{}种",tags.size());
         return tags;
     }
+
+    @Override
+    public Integer tagIncrement(Integer tagId){
+        Integer row = tagRepository.tagIncrement(tagId);
+        return row;
+    }
 }

@@ -11,8 +11,14 @@ public class ResultUtil {
     public static ResponseMsg success(){
         return new ResponseMsg<>(200,"成功",null);
     }
+    public static ResponseMsg success(String msg){
+        return new ResponseMsg<>(200,msg,null);
+    }
     public static ResponseMsg<Object> success(Object data){
         return new ResponseMsg<>(200,"成功",data);
+    }
+    public static ResponseMsg<Object> success(String msg,Object data){
+        return new ResponseMsg<>(200,msg,data);
     }
 
     public static ResponseMsg clientError(String msg){

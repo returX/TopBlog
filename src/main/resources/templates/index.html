@@ -20,20 +20,27 @@
                         <p class="content">
                             <a href="#" th:text="${article.articleContentInfo}">运行时数据区 java虚拟机定义了几种程序运行期间会用到的运行时数据区： pc寄存器 pc(program counter)寄存器又叫程序计数器，它是与线程一一对应的，因为一条线程只能执行一个方法的代码，如果该方法不是native方法(其它语言编写的方法)，则该pc寄存器就是保存当前操作的字节码...</a>
                         </p>
-                        <div class="info">
-                            <p><span class="date" th:text="${article.articleDate}">2020-01-19 00:49:25</span></p>
-                            <p class="point"></p>
-                            <p><span class="read-num">阅读数<span class="num" th:text="${article.articleViewsCount}">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="like-num">点赞数<span class="num" th:text="${article.articleLikeCount}">1</span></span></p>
-                            <p class="point"></p>
-                            <p><span class="comment-num">评论数<span class="num" th:text="${article.articleCommentCount}">1</span></span></p>
+                        <div class="info-bottom">
+                            <div class="info">
+                                <p><span class="date" th:text="${#strings.replace(article.articleDate,'T',' ')}">2020-01-19 00:49:25</span></p>
+                                <p class="point"></p>
+                                <p><span class="read-num">阅读数<span class="num" th:text="${article.articleViewsCount}">1</span></span></p>
+                                <p class="point"></p>
+                                <p><span class="like-num">点赞数<span class="num" th:text="${article.articleLikeCount}">1</span></span></p>
+                                <p class="point"></p>
+                                <p><span class="comment-num">评论数<span class="num" th:text="${article.articleCommentCount}">1</span></span></p>
+                            </div>
+                            <div class="edit">
+                                <a href="#">编辑</a>
+                                <p class="point"></p>
+                                <a href="#">删除</a>
+                            </div>
                         </div>
                     </div>
                     <div class="article-item box-shadow mb-3">
                         <ul class="pagination justify-content-center" th:with="tids = ${tid}">
                             <li class="page-item" th:classappend="${articles.isFirst() eq true?'disabled':''}" ><a class="page-link" th:href="@{/(pageNo=${articles.number - 1},tagId=${tids})}">上一页</a></li>
-                            <li class="page-item" th:classappend="${articles.number+1 eq index?'active':''}" th:each="index:${#numbers.sequence(1,articles.getTotalPages())}"><a class="page-link" th:href="@{/(pageNo=${index}-1,tagId=${tids})}" th:text="${index}">1</a></li>
+                            <li class="page-item" th:classappend="${articles.number eq index?'active':''}" th:each="index:${#numbers.sequence(0,articles.getTotalPages()-1)}"><a class="page-link" th:href="@{/(pageNo=${index},tagId=${tids})}" th:text="${index+1}">1</a></li>
                             <li class="page-item" th:classappend="${articles.isLast() eq true?'disabled':''}"><a class="page-link" th:href="@{/(pageNo=${articles.number + 1},tagId=${tids})}">下一页</a></li>
                         </ul>
                     </div>
@@ -62,8 +69,8 @@
                                 分类
                             </div>
                             <div class="card-body">
-                                <a  th:href="@{/(tagId=null)}" href="#" class="btn btn-primary btn-block" th:text="全部类别"></a>
-                                <a th:each="tag:${tags}" th:href="@{/(tagId=${tag.tagId})}" href="#" class="btn btn-primary btn-block" th:text="${tag.tagName+'  '+tag.tagNum}">Java</a>
+                                <a th:href="@{/(tagId=null)}" th:classappend="${null eq tid?'active':''}" href="#" class="btn btn-primary btn-block" th:text="全部类别"></a>
+                                <a th:each="tag:${tags}" th:href="@{/(tagId=${tag.tagId})}" href="#" class="btn btn-primary btn-block" th:classappend="${tag.tagNum eq 0?'disabled':(tag.tagId eq tid?'active':'')}" th:text="${tag.tagName+'  '+tag.tagNum}">Java</a>
                             </div>
                         </div>
                     </div>

@@ -13,4 +13,9 @@ public interface TagService {
      *获取分类
      */
     List<Tags> listTag();
+
+    /**
+     *tag自增1
+     */
+    Integer tagIncrement(Integer tagId);
 }

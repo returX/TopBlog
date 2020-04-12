@@ -2,6 +2,7 @@ package com.topblog.myblog.service;
 
 import com.topblog.myblog.model.dto.PageDTO;
 import com.topblog.myblog.model.entity.Article;
+import com.topblog.myblog.model.vo.ResponseMsg;
 import org.springframework.data.domain.Page;
 
 /**
@@ -14,5 +15,7 @@ public interface ArticleService {
      * @param pageDTO 封装好的信息
      */
     Page<Article> getPage(PageDTO pageDTO);
+
+    ResponseMsg addArticle(Article article);
 
 }

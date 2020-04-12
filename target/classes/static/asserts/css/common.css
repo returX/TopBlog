@@ -38,9 +38,7 @@ a:hover,a:visited,a:active{
 .point{
     width: 1px;
     height: 12px;
-    margin-top: 4px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 4px 8px;
     background-color: #e0e0e0;
 }
 div.info p{
@@ -48,9 +46,16 @@ div.info p{
     color: #6b6b6b;
     margin-bottom: auto;
 }
-div.info{
+div.info,div.edit{
+    display: flex;
+}
+div.info-bottom{
     display: flex;
     height: auto;
+    justify-content: space-between;
+}
+div.edit a{
+    font-size: 14px;
 }
 .read-num,.comment-num,.like-num{
     color: #999;
@@ -60,4 +65,7 @@ div.info{
 }
 ul.pagination{
     margin: 0;
+}
+.radio{
+    display: inline;
 }

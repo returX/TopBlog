@@ -5,36 +5,63 @@
     <title>Title</title>
     <link rel="stylesheet" href="asserts/plugins/editormd/css/editormd.min.css" />
     <link rel="stylesheet" href="asserts/plugins/editormd/css/editormd.preview.css" />
-    <link rel="stylesheet" href="asserts/css/bootstrap.min-jsf.css" />
+    <head th:include="include :: css-common"></head>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="input-group">
         <div class="ml-2"><a href="#" class="navbar-brand">返回</a></div>
-        <input class="form-control mr-1" type="text" name="article" placeholder="输入文章标题">
+        <input class="form-control mr-1" type="text" id="article-title" placeholder="输入文章标题">
         <button class="btn btn-primary mr-1" type="button" >保存草稿</button>
-        <button class="btn btn-primary" type="button" >发布文章</button>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-1">发布文章</button>
     </div>
 </nav>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div id="editor">
-                <textarea style="display:none;">    <p th:text="${hahaha}"></p>
-</textarea>
+                <textarea style="display:none;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="modal-1" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <div class="modal-title">发布文章</div>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p>文章类别</p>
+                        <div class="radio">
+                            <label><input type="radio" name="tag" checked="checked"  th:value="${tags.get(0).tagId}" th:text="${tags.get(0).tagName}"></label>
+                        </div>
+                        <div class="radio" th:each="tag:${tags}" th:if="${tag.tagId ne 1}">
+                            <label><input type="radio" name="tag"  th:value="${tag.tagId}" th:text="${tag.tagName}"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="createArticle">发布文章</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script src="asserts/js/jquery.js"></script>
+<body th:include="include :: js-common"></body>
 <script src="asserts/plugins/editormd/editormd.min.js"></script>
 <script src="asserts/plugins/editormd/lib/marked.min.js"></script>
 <script src="asserts/plugins/editormd/lib/prettify.min.js"></script>
+<script src="asserts/js/common.js"></script>
+<script src="asserts/js/formCreate.js"></script>
 <script type="text/javascript">
     $(function () {
+        var tagId = 1;
         var editor = editormd("editor", {
             width: "90%",
-            height: "720px",
+            height: "820px",
             path: "asserts/plugins/editormd/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
             saveHTMLToTextarea : true, // 保存 HTML 到 Textarea
             toolbarAutoFixed:true,//工具栏自动固定定位的开启与禁用
@@ -44,8 +71,37 @@
             sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
             imageUpload : true,
             imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL : "/file/uploadImage",//图片上传的url,
+            imageUploadURL : "/file/uploadImage",//图片上传的url,未实现
             fontSize: "18px",
+        });
+
+        $("input[type=radio][name=tag]").change(function () {
+            tagId = this.value;
+        });
+
+
+
+        $("#createArticle").click(function () {
+            var text_markdown = editor.getMarkdown();
+            var text_html = editor.getHTML();
+            var title = $("#article-title").val();
+            formCreate("formId",{
+                method : "post",
+                url : "create",
+                // enctype : "application/json",
+                submit :true,
+                text:{
+                    articleTitle : title,
+                    articleContentHtml : text_html,
+                    articleContentMd : text_markdown,
+                    articleContentInfo : "",
+                    articleDate : dateFormat(new Date().getTime()),
+                    articleViewsCount : 0,
+                    articleCommentCount : 0,
+                    articleLikeCount : 0,
+                    articleTagId : tagId
+                }
+            });
         });
     });
 </script>
